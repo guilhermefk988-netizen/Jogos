@@ -14,6 +14,7 @@ const dado = fetch("https://www.freetogame.com/api/games")
 
         const fundoIMG = document.querySelector(".Conteudo__principal")
 
+        const jogos = document.querySelector(".Todos__jogos")
 
         fundoIMG.innerHTML = `
     <p class="destaque">⭐ JOGO EM DESTAQUE</p>
@@ -29,7 +30,27 @@ const dado = fetch("https://www.freetogame.com/api/games")
                 <button class="button1__principal">Ver detalhes</button>
                 <button>♡ Adicionar aos favoritos</button>
                 </div>
-    `}
+    `
+        jogos.innerHTML = `
+${dados.map(dadoss => {
+            return `
+  <div class="cards__jogos">
+  <img src="${dadoss.thumbnail}"
+
+  <h2>${dadoss.title}</h2>
+  <p>${dadoss.genre}</p>
+  <p>${dadoss.platform}</p>
+
+  <a href="${dadoss.game_url}">Ver jogo</a>
+
+  </div>
+  `
+        }
+        ).join()}
+
+
+`
+    }
     )
 
     .catch(Erro => console.log(Erro))
