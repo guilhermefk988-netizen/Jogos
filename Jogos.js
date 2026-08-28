@@ -4,7 +4,7 @@
 
 const dado = fetch("https://www.freetogame.com/api/games")
     .then(Sucesso => {
-        if (!Sucesso.ok) { throw new Error("Erro de requisição" + Sucesso.status) }
+        if (!Sucesso.ok) { throw new Error("Erro de requisição:" + Sucesso.status) }
         return Sucesso.json()
     })
     .then(dados => {
@@ -35,9 +35,9 @@ const dado = fetch("https://www.freetogame.com/api/games")
 ${dados.map(dadoss => {
             return `
   <div class="cards__jogos">
-  <img src="${dadoss.thumbnail}"
+  <img src="${dadoss.thumbnail}">
 
-  <h2>${dadoss.title}</h2>
+  <h3>${dadoss.title}</h3>
   <p>${dadoss.genre}</p>
   <p>${dadoss.platform}</p>
 
@@ -46,12 +46,79 @@ ${dados.map(dadoss => {
   </div>
   `
         }
-        ).join()}
-
-
+        ).join("")}
 `
-    }
-    )
+const cards = document.querySelectorAll(".cards")
+
+cards.forEach(card=>{
+const genero = card.dataset.genero
+        card.addEventListener("click", function(){
+             
+            const ação = dado.filter(filtro =>
+                filtro.genre === genero
+
+
+
+            )
+console.log(ação)
+console.log("Jogos Action:", ação.length)
+const quantidadeGeneros = {}
+
+dado.forEach(jogo => {
+
+    const genero = jogo.genre
+
+    quantidadeGeneros[genero] =
+        (quantidadeGeneros[genero] || 0) + 1
+
+})
+
+console.log(quantidadeGeneros)
+
+            jogos.innerHTML = ação.map(jogo => {
+                return `
+            <div class="cards__jogos">
+
+                <img src="${jogo.thumbnail}" alt="${jogo.title}">
+
+                <h3>${jogo.title}</h3>
+
+                <p>${jogo.genre}</p>
+
+                <p>${jogo.platform}</p>
+
+                <a href="${jogo.game_url}" target="_blank">
+                    Ver jogo
+                </a>
+
+            </div>
+`    }).join("")
+
+})
+const cardizinho = document.querySelector(".cardzinho")
+        cardizinho.addEventListener("click", function(){ 
+            jogos.innerHTML = `
+${dados.map(dadoss => {
+            return `
+  <div class="cards__jogos">
+  <img src="${dadoss.thumbnail}">
+
+  <h3>${dadoss.title}</h3>
+  <p>${dadoss.genre}</p>
+  <p>${dadoss.platform}</p>
+
+  <a href="${dadoss.game_url}">Ver jogo</a>
+
+  </div>
+  `
+        }
+        ).join("")}
+`})
+                              
+}
+
+    )})
+    
 
     .catch(Erro => console.log(Erro))
 
