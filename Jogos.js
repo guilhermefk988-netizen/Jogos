@@ -95,6 +95,44 @@ console.log(quantidadeGeneros)
 `    }).join("")
 
 })
+ 
+const Buscar = document.querySelector(".input")
+const imagemClick = document.querySelector(".Imagem")
+
+imagemClick.addEventListener("click", async function(){
+
+    const resposta = await fetch(
+        `https://www.freetogame.com/api/games`
+    )
+    const pesquisa = Buscar.value
+
+        const dados = await resposta.json()
+
+    const resultados = dados.filter(jogo =>
+        jogo.title.toLowerCase().includes(pesquisa.toLowerCase())
+    )
+
+        jogos.innerHTML = resultados.map(jogo => {
+        return `
+            <div class="cards__jogos">
+
+                <img src="${jogo.thumbnail}" alt="${jogo.title}">
+
+                <h3>${jogo.title}</h3>
+
+                <p>${jogo.genre}</p>
+
+                <p>${jogo.platform}</p>
+
+                <a href="${jogo.game_url}" target="_blank">
+                    Ver jogo
+                </a>
+
+            </div>
+        `
+    }).join("")
+})
+
 const cardizinho = document.querySelector(".cardzinho")
         cardizinho.addEventListener("click", function(){ 
             jogos.innerHTML = `
