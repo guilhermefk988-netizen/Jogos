@@ -18,8 +18,8 @@ const dado = fetch("https://www.freetogame.com/api/games")
 
         fundoIMG.innerHTML = `
     <p class="destaque">⭐ JOGO EM DESTAQUE</p>
-     <h2>${dados[66].title}</h2>       
-     <p>${dados[66].short_description}</p>   
+     <h2>${dados[65].title}</h2>       
+     <p>${dados[65].short_description}</p>   
 
     <div class="principal__descrissao">
         <p>⭐ 9.6</p>
