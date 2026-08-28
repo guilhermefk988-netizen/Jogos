@@ -7,7 +7,7 @@ body {
   font-family: "Poppins", sans-serif;
   background: rgb(2, 2, 2);
   color: white;
-overflow-x: hidden;
+  overflow-x: hidden;
 }
 button {
   cursor: pointer;
@@ -138,27 +138,27 @@ button:active {
   align-items: center;
   justify-content: center;
 
-  .Titulo__genero{
+  .Titulo__genero {
     width: 90%;
 
-    h2{
-        font-size: 1.5vw;
+    h2 {
+      font-size: clamp(1rem,1.5vw, 2.5rem);
     }
   }
 }
-.Jogo__nome{
+.Jogo__nome {
   width: 100%;
-  height: 3vw;
+  height: 8vh;
   display: flex;
   align-items: center;
   justify-content: center;
 
-  .jogos__Sem__sessao{
+  .jogos__Sem__sessao {
     width: 90%;
     height: 100%;
   }
-  h2{
-    font-family: 1vw;
+  h2 {
+    font-size: clamp(1.5rem,2vw, 4rem);
   }
 }
 .Escolha__genero {
@@ -167,8 +167,9 @@ button:active {
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: clamp(0.3rem,1vw,2rem);
 
-  .Card{
+  .Card {
     width: 95%;
     height: 100%;
     display: flex;
@@ -176,9 +177,9 @@ button:active {
     justify-content: center;
     gap: 1vw;
   }
-  .cards{
-    width: 10%;
-    height: 85%;
+  .cards {
+    width: clamp(4rem,9vw, 15rem);
+    height: 8.5vh;
     background: rgb(18, 18, 19);
     border-radius: 0.7vw;
     border: solid 1px rgb(61, 58, 58);
@@ -186,22 +187,25 @@ button:active {
     display: flex;
     align-items: center;
     justify-content: center;
-    
-    p{
-        font-size: 1vw;
-        font-weight: 400;
+
+    p {
+      font-size: clamp(0.6rem,1vw, 3rem);
+      font-weight: 400;
     }
   }
-  .cards:active{
+  .cards:active {
     transform: translateY(-3px);
   }
-  .cardzinho{
-         width: 7%;
-    height: 100%;
-    background: rgb(130, 130, 255);  
+  .cardzinho {
+    width: 7%;
+    height: 80%;
+    border-radius: 0.4vw;
+    background: rgb(133, 27, 194);
+    box-shadow: 0 0 10px blueviolet;
+    border: solid 1px rgb(88, 88, 88);
   }
 }
-.cardzinho{
+.cardzinho {
   border-radius: 0.8vw;
   display: flex;
   align-items: center;
@@ -209,33 +213,33 @@ button:active {
   height: 5vh;
   cursor: pointer;
 }
-.cardzinho:active{
+.cardzinho:active {
   transform: translateY(-3px);
 }
-.Todos__jogos{
+.Todos__jogos {
   width: 102%;
   height: auto;
   display: grid;
-  grid-template-columns: repeat(10, 7.5vw);
+  grid-template-columns: repeat(5, 16.5vw);
   align-items: center;
   justify-content: center;
   transition: 0.3s;
-gap: 2vw;
+  gap: 2vw;
 
-  .cards__jogos{
-    width: 15vw;
+  .cards__jogos {
+    width: clamp(7rem,15vw,25rem);
     height: 40vh;
     background: rgb(15, 15, 20);
     border-radius: 1vw;
     overflow: hidden;
     position: relative;
-    
 
-    img{
+    img {
       width: 100%;
       height: 20vh;
     }
-    a{
+    
+    a {
       color: white;
       text-decoration: none;
       background: blueviolet;
@@ -247,23 +251,66 @@ gap: 2vw;
       bottom: 0;
       z-index: 5;
     }
-    a:active{
+    a:active {
       transform: translateY(-3px);
     }
-    h2{
-      font-size: 2vw;
-      color: red;
-      background: blue;
-    }
+    
   }
-  .cards__jogos:hover{
+  .cards__jogos:hover {
     transform: translateY(-3px);
     filter: drop-shadow(0 0 10px rgb(149, 35, 194));
   }
-  .informações__cards{
+  h3{
+      font-size: clamp(0.7rem,1.5vw, 2rem);
+      padding: 0 0.2vw;
 
+    }
+  .informações__cards {
     width: 100%;
     height: 100%;
     padding: 1vw;
   }
+}
+@media(max-width:768px){
+
+
+  .Todos__jogos{
+    display: grid;
+    grid-template-columns: repeat(4, clamp(7rem, 20.5vw,30rem));
+  }
+
+}
+@media(max-width:600px){
+  .Escolha__genero{
+    height: 30vh;
+display: grid;
+grid-template-columns: repeat(4, 10vw);
+gap: 0 clamp(2.5rem,5vw, 7rem)
+    
+  }
+  .Card{
+    width: 100%;
+   height: 30vh;
+    display: grid;
+    grid-template-columns: repeat(5, 50vw);
+  }
+    .cardzinho{
+
+    padding: 0 clamp(2.5rem,8vw, 10rem);
+white-space: nowrap;
+  
+  }
+  
+}
+@media(max-width:550px){
+    .Todos__jogos{
+    display: grid;
+    width: 95%;
+    grid-template-columns: repeat(3,  clamp(6.2rem,25.5vw,30rem));
+  }
+   .cards__jogos {
+    width: clamp(2rem,5vw, 15rem);
+    scale: 0.9;
+  }
+
 }
